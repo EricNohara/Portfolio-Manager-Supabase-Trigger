@@ -14,4 +14,8 @@ headers = {
 }
 
 def lambda_handler(event, context):
-    return requests.get(NEXT_PUBLIC_PORTFOLIO_API_URL, headers=headers)
+    response = requests.get(NEXT_PUBLIC_PORTFOLIO_API_URL, headers=headers)
+    return {
+        "statusCode": response.status_code,
+        "body": response.text
+    }
